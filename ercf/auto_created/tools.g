@@ -1,0 +1,36 @@
+; ##### Tool0#####
+M563 P0 D0 H1 F0
+G10 P0 X0 Y0 Z0
+G10 P0 R0 S0
+; ##### Tool1#####
+M563 P1 D0 H1 F0
+G10 P1 X0 Y0 Z0
+G10 P1 R0 S0
+; ##### Tool2#####
+M563 P2 D0 H1 F0
+G10 P2 X0 Y0 Z0
+G10 P2 R0 S0
+; ##### Tool3#####
+M563 P3 D0 H1 F0
+G10 P3 X0 Y0 Z0
+G10 P3 R0 S0
+; ##### Tool4#####
+M563 P4 D0 H1 F0
+G10 P4 X0 Y0 Z0
+G10 P4 R0 S0
+; ##### Tool5#####
+M563 P5 D0 H1 F0
+G10 P5 X0 Y0 Z0
+G10 P5 R0 S0
+; ##### Tool6#####
+M563 P6 D0 H1 F0
+G10 P6 X0 Y0 Z0
+G10 P6 R0 S0
+; ##### Tool7#####
+M563 P7 D0 H1 F0
+G10 P7 X0 Y0 Z0
+G10 P7 R0 S0
+; ##### Tool8#####
+M563 P8 D0 H1 F0
+G10 P8 X0 Y0 Z0
+G10 P8 R0 S0
