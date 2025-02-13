@@ -1,0 +1,12 @@
+M574 'd1 P"119.SW1"
+G1 H4 'd300 F1000
+G91
+G1 'd-40 F1000
+G90
+M400
+set global.lane3_first_length=move.axes[6].machinePosition
+if fileexists("0:/sys/AFC/AFC-info/lane3firstlength.g")
+    M472 P"0:/sys/AFC/AFC-info/lane3firstlength.g"
+echo >"0:/sys/AFC/AFC-info/lane3firstlength.g" "; lane3 status"
+echo >>"0:/sys/AFC/AFC-info/lane3firstlength.g" {"set global.lane3_first_length = " ^ global.lane3_first_length}
+M574 'd1 P"nil"

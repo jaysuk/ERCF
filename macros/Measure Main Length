@@ -1,0 +1,30 @@
+var first_length=global.lane3_first_length
+var additional_length=0
+var total_length=0
+var lane0_total_length=0
+var lane1_total_length=0
+var lane2_total_length=0
+var lane3_total_length=0
+
+M574 'd1 P"119.SW11"
+G1 H4 'd20000 F2000
+M400
+set var.total_length=move.axes[6].machinePosition
+set var.additional_length={var.total_length-global.lane3_first_length}
+set var.lane0_total_length={var.additional_length+global.lane0_first_length}
+set var.lane1_total_length={var.additional_length+global.lane1_first_length}
+set var.lane2_total_length={var.additional_length+global.lane2_first_length}
+set var.lane3_total_length={var.additional_length+global.lane3_first_length}
+set global.lane0_total_length=var.lane0_total_length
+set global.lane1_total_length=var.lane1_total_length
+set global.lane2_total_length=var.lane2_total_length
+set global.lane3_total_length=var.lane3_total_length
+if fileexists("0:/sys/AFC/AFC-info/lanelengths.g")
+    M472 P"0:/sys/AFC/AFC-info/lanelengths.g"
+echo >"0:/sys/AFC/AFC-info/lanelengths.g" "; lane lengths"
+echo >>"0:/sys/AFC/AFC-info/lanelengths.g" {"set global.lane0_total_length = " ^ var.lane0_total_length}
+echo >>"0:/sys/AFC/AFC-info/lanelengths.g" {"set global.lane1_total_length = " ^ var.lane1_total_length}
+echo >>"0:/sys/AFC/AFC-info/lanelengths.g" {"set global.lane2_total_length = " ^ var.lane2_total_length}
+echo >>"0:/sys/AFC/AFC-info/lanelengths.g" {"set global.lane3_total_length = " ^ var.lane3_total_length}
+M574 'd1 P"nil"
+G1 H1 'd{global.lane3_first_length} F1000

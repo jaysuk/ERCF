@@ -1,0 +1,22 @@
+var unload_length=global.lane3_first_length+50
+
+if global.lane3_loaded=true
+    M584 P7
+    M950 J4 C"119.SW10"
+    M98 P"0:/sys/AFC/Motors/Lane3_reverse.g"
+    G1 'd{-var.unload_length} F1000
+    M400
+    M98 P"0:/sys/AFC/Motors/Lane3_off.g"
+    if sensors.gpIn[4].value=0
+        set global.lane3_loaded=false
+        if fileexists("0:/sys/AFC/AFC-info/lane3.g")
+            M472 P"0:/sys/AFC/AFC-info/lane3.g"
+        echo >"0:/sys/AFC/AFC-info/lane3.g" "; lane3 status"
+        echo >>"0:/sys/AFC/AFC-info/lane3.g" {"set global.lane3_loaded = " ^ global.lane3_loaded}
+        set global.AFC_LED_array[3]=0
+        M98 P"0:/sys/AFC/LEDs.g"
+
+    M950 J4 C"nil"
+    M584 P4
+else
+    M117 "No Filament Loaded to Unload"

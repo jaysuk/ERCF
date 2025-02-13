@@ -1,1 +1,0 @@
-echo >"0:/sys/ercf/current_state.g" "T"^param.S^" P0"
